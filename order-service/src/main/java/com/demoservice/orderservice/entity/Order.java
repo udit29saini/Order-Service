@@ -21,7 +21,7 @@ public class Order {
     private String shippingAddress;
     private String billingAddress;
     private boolean paymentStatus;
-    @OneToMany
-    private List<Product> productList;
+//    @OneToMany
+//    private List<Product> productList;
 
 }

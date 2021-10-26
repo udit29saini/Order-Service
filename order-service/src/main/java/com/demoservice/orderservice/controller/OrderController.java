@@ -23,6 +23,7 @@ public class OrderController {
     public Order bookOrder(@RequestBody Order order){
     	
     	//log.info("In the bookOrder {}",order);
+
         return orderService.saveOrder(order) ;
     }
     @GetMapping("/User")

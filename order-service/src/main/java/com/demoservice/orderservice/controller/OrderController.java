@@ -19,34 +19,25 @@ public class OrderController {
     @Autowired
     private OrderService orderService ;
 
-    @PutMapping("/bookorder")
-    public Order bookOrder(@RequestBody Order order){
-    	
-    	//log.info("In the bookOrder {}",order);
-
-        return orderService.saveOrder(order) ;
-    }
     @GetMapping("/User")
     public String firstApi()
     {
         return "Hello Order Service";
     }
 
-//    @PostMapping("/{username}")
-//    public ResponseEntity<Holding> addHolding(@RequestBody HoldingRequestDto holdingRequestDto, @PathVariable String username){
-//        log.info("Going to add holding {}", holdingRequestDto);
-//        Holding response =  holdingService.addHolding(holdingRequestDto, username, true);
-//        return  new ResponseEntity<Holding>(response, HttpStatus.CREATED);
-//
-//    }
+    @PutMapping("/bookorder")
+    public Order bookOrder(@RequestBody Order order){
+    	
+    	log.info("In the bookOrder {}",order);
+        return orderService.saveOrder(order) ;
+    }
 
-//    @PostMapping("/Order")
-//    public ResponseEntity<Order> addOrder(@RequestBody orderDto)
-//    {
-//        log.info("In add Order {}",orderDto);
-//        orderResponseDto responseDto =  orderService.saveOrder()
-//        return new ResponseEntity<Order>(response, HttpStatus.CREATED);
-//
-//    }
+    @PostMapping("/update-criteria")
+    public void updateOrder(@RequestBody String s)
+    {
+        log.info("update the order in this criteria {}",s);
+        orderService.updateOrder(s);
+    }
+
 
 }

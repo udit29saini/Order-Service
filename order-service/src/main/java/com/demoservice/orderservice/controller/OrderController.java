@@ -40,4 +40,10 @@ public class OrderController {
     }
 
 
+        @GetMapping("/getOrder/{orderId}")
+        public ResponseEntity<Order> getOrderFromOrderId(@PathVariable int orderId){
+            log.info("Fetching the order for orderId {}" , orderId) ;
+            Order order = orderService.getOrderByOrderId(orderId) ;
+            return new ResponseEntity<Order>(order , HttpStatus.FOUND) ;
+        }
 }

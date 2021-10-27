@@ -1,5 +1,6 @@
 package com.demoservice.orderservice.controller;
 
+import com.demoservice.orderservice.dto.CriteriaDto;
 import com.demoservice.orderservice.entity.Order;
 
 import com.demoservice.orderservice.service.OrderService;
@@ -33,10 +34,10 @@ public class OrderController {
     }
 
     @PostMapping("/update-criteria")
-    public void updateOrder(@RequestBody String s)
+    public void updateOrder(@RequestBody CriteriaDto criteria)
     {
-        log.info("update the order in this criteria {}",s);
-        //orderService.updateOrder(s);
+        log.info("update the order in this criteria {}",criteria);
+        orderService.updateOrder(criteria);
     }
 
 

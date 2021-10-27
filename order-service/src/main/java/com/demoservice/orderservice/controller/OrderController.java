@@ -25,10 +25,10 @@ public class OrderController {
         return "Hello Order Service";
     }
 
-    @PutMapping("/bookorder")
+    @PostMapping("/bookorder")
     public Order bookOrder(@RequestBody Order order){
     	
-    	log.info("In the bookOrder {}",order);
+    	//log.info("In the bookOrder {}",order);
         return orderService.saveOrder(order) ;
     }
 
@@ -36,14 +36,14 @@ public class OrderController {
     public void updateOrder(@RequestBody String s)
     {
         log.info("update the order in this criteria {}",s);
-        orderService.updateOrder(s);
+        //orderService.updateOrder(s);
     }
 
 
-        @GetMapping("/getOrder/{orderId}")
-        public ResponseEntity<Order> getOrderFromOrderId(@PathVariable int orderId){
-            log.info("Fetching the order for orderId {}" , orderId) ;
-            Order order = orderService.getOrderByOrderId(orderId) ;
-            return new ResponseEntity<Order>(order , HttpStatus.FOUND) ;
-        }
+    @GetMapping("/getOrder/{orderId}")
+    public ResponseEntity<Order> getOrderFromOrderId(@PathVariable int orderId){
+        log.info("Fetching the order for orderId {}" , orderId) ;
+        Order order = orderService.getOrderByOrderId(orderId) ;
+        return new ResponseEntity<Order>(order , HttpStatus.FOUND) ;
+    }
 }

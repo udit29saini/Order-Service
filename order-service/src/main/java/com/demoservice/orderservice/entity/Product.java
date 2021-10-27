@@ -14,15 +14,16 @@ import javax.persistence.*;
 @Table(name = "Product_TB")
 public class Product{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int productId ;
-    private String productName;
+    private String name;
     private double productPrice ;
     private String productDescription ;
     private double dimension ;
     private double weight ;
 
-    @ManyToOne
-    @JoinColumn(name = "orderid", nullable = false)
-    @JsonIgnore
-    private Order order;
+//    @JsonIgnore
+//    @ManyToOne
+//    @JoinColumn(name = "order_id", nullable = false)
+//    private Order order;
 }

@@ -13,11 +13,12 @@ public class OrderService {
     private OrderRepository orderRepository ;
 
     public Order saveOrder(Order order){
+        //order.setOrderDate(localDateTime.now);
         return orderRepository.save(order) ;
     }
 
     public Order getOrderByOrderId(int orderId) {
-        Order order = orderRepository.getById(orderId) ;
+        Order order = orderRepository.findById(orderId).get() ;
         return order ;
     }
 }

@@ -31,19 +31,22 @@ public class OrderService {
         if(criteria.getBillingAddress()!="NA")
         {
             Order order = orderRepository.findById(criteria.getOrderId()).get() ;
-            order.setBillingAddress(criteria.getBillingAddress());
-            orderRepository.save(order);
+            Order order1=order;
+            order1.setBillingAddress(criteria.getBillingAddress());
+            orderRepository.save(order1);
         }
         if(criteria.getShippingAddress()!="NA")
         {
             Order order = orderRepository.findById(criteria.getOrderId()).get() ;
-            order.setShippingAddress(criteria.getShippingAddress());
-            orderRepository.save(order);
+            Order order1=order;
+            order1.setShippingAddress(criteria.getShippingAddress());
+            orderRepository.save(order1);
         }
         if(criteria.getNameCustomer()!="NA") {
             Order order = orderRepository.findById(criteria.getOrderId()).get() ;
-            order.setNameCustomer(criteria.getNameCustomer());
-            orderRepository.save(order);
+            Order order1=order;
+            order1.setNameCustomer(criteria.getNameCustomer());
+            orderRepository.save(order1);
         }
     }
 }

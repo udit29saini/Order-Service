@@ -3,17 +3,15 @@ package com.demoservice.orderservice.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.joda.time.LocalDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @Data
-@Table(name = "Order_TB")
+@Table(name = "Order_Tb")
 @AllArgsConstructor
 public class Order {
     @Id
@@ -25,7 +23,8 @@ public class Order {
     private boolean paymentStatus;
     private LocalDateTime orderDate;
     private double orderCost;
-
+//    private String email;
+//    private String mobileNumber;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "oId",referencedColumnName = "orderId")
     private List<Product> products;

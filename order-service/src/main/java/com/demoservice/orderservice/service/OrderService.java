@@ -3,11 +3,12 @@ package com.demoservice.orderservice.service;
 import com.demoservice.orderservice.dto.CriteriaDto;
 import com.demoservice.orderservice.entity.Order;
 import com.demoservice.orderservice.repository.OrderRepository;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class OrderService {
@@ -48,5 +49,26 @@ public class OrderService {
             order1.setNameCustomer(criteria.getNameCustomer());
             orderRepository.save(order1);
         }
+    }
+
+    public List<Order> queryOrder(String queryCategory,String queryParam) {
+        List<Order> list= new ArrayList<>();
+        if(queryCategory.compareTo("Billing_Address")==0)
+        {
+            list= orderRepository.findByBA(queryParam);
+        }
+        if(queryCategory.compareTo("Address")==0)
+        {
+            list= orderRepository.findByA(queryParam);
+        }
+        if(queryCategory.compareTo("Payment")==0)
+        {
+            list= orderRepository.findByPA(queryParam);
+        }
+        if(queryCategory.compareTo("Name")==0)
+        {
+            list= orderRepository.findByName(queryParam);
+        }
+        return list;
     }
 }

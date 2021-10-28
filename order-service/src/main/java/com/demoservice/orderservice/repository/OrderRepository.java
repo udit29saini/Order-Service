@@ -25,6 +25,6 @@ public interface OrderRepository extends JpaRepository<Order , Integer> {
     List<Order> findByName(String queryParam);
 
     @Query(value = "SELECT * FROM order_tb ot WHERE ot.payment_status=?1",nativeQuery = true)
-    List<Order> findByPA(String queryParam);
+    List<Order> findByPA(boolean queryParam);
 
 }

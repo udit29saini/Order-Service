@@ -63,7 +63,14 @@ public class OrderService {
         }
         if(queryCategory.compareTo("Payment")==0)
         {
-            list= orderRepository.findByPA(queryParam);
+            if(queryParam.compareTo("true")==0)
+            {
+                list= orderRepository.findByPA(true);
+            }
+            else
+            {
+                list= orderRepository.findByPA(false);
+            }
         }
         if(queryCategory.compareTo("Name")==0)
         {

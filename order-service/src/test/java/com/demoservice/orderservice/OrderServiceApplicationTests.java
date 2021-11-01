@@ -57,5 +57,28 @@ class OrderServiceApplicationTests {
 //				.andExpect(jsonPath("$.orderId" , is(order.getOrderId()))) ;
 	}
 
+//	@Test
+//	void bookOrder() throws Exception{
+//		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.now(), 20.0);
+//		String stringOrder = objectMapper.writeValueAsString(order);
+//
+//		Mockito.when(mockRepository.save(order)).thenReturn(order) ;
+//
+//		mockMvc.perform(get("/order/bookorder"))
+//				.andDo(print())
+//				.andExpect(status().isCreated());
+//	}
+//
+//	@Test
+//	void queryOrder() throws Exception{
+//		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.now(), 20.0);
+//		String stringOrder = objectMapper.writeValueAsString(order);
+//
+//		Mockito.when(mockRepository.save(order)).thenReturn(order) ;
+//
+//		mockMvc.perform(get("/order/query-criteria/{queryCategory}/{queryParam}" ))
+//				.andDo(print())
+//				.andExpect(status().isCreated());
+//	}
 
 }

@@ -1,5 +1,7 @@
 package com.demoservice.orderservice.controller;
 
+import com.amazonaws.Response;
+import com.amazonaws.services.xray.model.Http;
 import com.demoservice.orderservice.dto.CriteriaDto;
 import com.demoservice.orderservice.entity.Order;
 
@@ -29,17 +31,19 @@ public class OrderController {
     }
 
     @PostMapping("/bookorder")
-    public Order bookOrder(@RequestBody Order order){
-    	
-    	//log.info("In the bookOrder {}",order);
-        return orderService.saveOrder(order) ;
+    public ResponseEntity<Order> bookOrder(@RequestBody Order order){
+    	log.info("In the bookOrder {}",order);
+    	Order response = orderService.saveOrder(order);
+    	return new ResponseEntity<Order>(order , HttpStatus.CREATED) ;
     }
 
     @PostMapping("/update-criteria")
     public void updateOrder(@RequestBody CriteriaDto criteria)
     {
         log.info("update the order in this criteria {}",criteria);
+//        Order response = orderService.updateOrder(criteria);
         orderService.updateOrder(criteria);
+//        return new ResponseEntity<>( HttpStatus.ACCEPTED);
     }
 
 

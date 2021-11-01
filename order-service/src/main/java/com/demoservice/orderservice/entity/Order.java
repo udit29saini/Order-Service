@@ -29,6 +29,13 @@ public class Order {
     @JoinColumn(name = "oId",referencedColumnName = "orderId")
     private List<Product> products;
 
+    public Order(int orderId, String nameCustomer, String shippingAddress, String billingAddress, boolean b, LocalDateTime now, double v){
+        this.orderId = orderId ;
+        this.nameCustomer = nameCustomer ;
+        this.shippingAddress = shippingAddress ;
+        this.billingAddress = billingAddress ;
+    }
+
     public double orderCost()
     {
         double sum=0.0;

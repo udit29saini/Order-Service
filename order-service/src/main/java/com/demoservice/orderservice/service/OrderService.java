@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -24,8 +25,8 @@ public class OrderService {
     }
 
     public Order getOrderByOrderId(int orderId) {
-        Order order = orderRepository.findById(orderId).get() ;
-        return order ;
+        Optional<Order> order = orderRepository.findById(orderId) ;
+        return order.get() ;
     }
 
     public void updateOrder(CriteriaDto criteria) {

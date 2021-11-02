@@ -38,7 +38,7 @@ public class OrderController {
     }
 
     @PutMapping("/updateorder")
-    public ResponseEntity<String> updateOrder(@RequestBody CriteriaDto criteria)
+    public ResponseEntity<Order> updateOrder(@RequestBody CriteriaDto criteria)
     {
         log.info("update the order in this criteria {}",criteria);
         return orderService.updateOrder(criteria);

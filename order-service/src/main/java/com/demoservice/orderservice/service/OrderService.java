@@ -32,7 +32,7 @@ public class OrderService {
 		return order.get();
 	}
 
-	public ResponseEntity<String> updateOrder(CriteriaDto criteria) {
+	public ResponseEntity<Order> updateOrder(CriteriaDto criteria) {
 		
 		try {
 			Order order = orderRepository.findById(criteria.getOrderId()).get();
@@ -53,9 +53,9 @@ public class OrderService {
 				order.setMobileNumber(criteria.getMobileNumber());
 				orderRepository.save(order);
 			}
-			return new ResponseEntity<>("Updated Successfully",HttpStatus.ACCEPTED);
+			return new ResponseEntity<>(order,HttpStatus.ACCEPTED);
 		} catch (Exception e) {
-			return new ResponseEntity<>("Update Failed",HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(null,HttpStatus.NOT_ACCEPTABLE);
 			
 			
 		}

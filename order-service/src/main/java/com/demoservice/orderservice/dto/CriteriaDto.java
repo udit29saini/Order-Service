@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 public class CriteriaDto {
     private int orderId;
-    private String shippingAddress;
+    
     private String billingAddress;
-    private boolean paymentStatus;
-    private String nameCustomer;
+   
+    private String email;
+    private String mobileNumber;
 }

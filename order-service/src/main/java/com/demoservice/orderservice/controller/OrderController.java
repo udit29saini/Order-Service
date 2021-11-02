@@ -37,13 +37,13 @@ public class OrderController {
     	return new ResponseEntity<Order>(order , HttpStatus.CREATED) ;
     }
 
-    @PostMapping("/update-criteria")
-    public void updateOrder(@RequestBody CriteriaDto criteria)
+    @PutMapping("/updateorder")
+    public ResponseEntity<String> updateOrder(@RequestBody CriteriaDto criteria)
     {
         log.info("update the order in this criteria {}",criteria);
-//        Order response = orderService.updateOrder(criteria);
-        orderService.updateOrder(criteria);
-//        return new ResponseEntity<>( HttpStatus.ACCEPTED);
+
+        return orderService.updateOrder(criteria);
+    
     }
 
 
@@ -62,5 +62,7 @@ public class OrderController {
         List<Order> list= orderService.queryOrder(queryCategory,queryParam);
         return new ResponseEntity<List<Order>>(list,HttpStatus.FOUND);
     }
+    
+	
 
 }

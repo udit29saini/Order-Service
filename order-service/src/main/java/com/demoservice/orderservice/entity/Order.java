@@ -23,8 +23,8 @@ public class Order {
     private boolean paymentStatus;
     private LocalDateTime orderDate;
     private double orderCost;
-//    private String email;
-//    private String mobileNumber;
+    private String email;
+    private String mobileNumber;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "oId",referencedColumnName = "orderId")
     private List<Product> products;

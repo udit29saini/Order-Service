@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.demoservice.orderservice.dto.OrderConfirmDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +21,15 @@ public class OrderService {
 	@Autowired
 	private OrderRepository orderRepository;
 
-	public Order saveOrder(Order order) {
+	public OrderConfirmDTO saveOrder(Order order) {
 		// order.setOrderDate(localDateTime.now);
 		order.setOrderDate(LocalDateTime.now());
 		order.setOrderCost(order.orderCost());
-		return orderRepository.save(order);
+		orderRepository.save(order);
+		OrderConfirmDTO orderConfirmDTO= new OrderConfirmDTO();
+		orderConfirmDTO.setOrderStatus("Confirmed");
+		orderConfirmDTO.setWarehouseLocation(order.getShippingAddress());
+		return orderConfirmDTO;
 	}
 
 	public Order getOrderByOrderId(int orderId) {

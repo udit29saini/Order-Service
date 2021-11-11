@@ -64,6 +64,13 @@ public class OrderController {
     	return new ResponseEntity<OrderConfirmDTO>(orderConfirmDTO , HttpStatus.CREATED) ;
     }
 
+    @GetMapping("/getorder")
+    public ResponseEntity getAllOrders(){
+        log.info("Fetching all orders") ;
+        List<Order> orderList = orderService.fetchAllOrders();
+        return ResponseEntity.status(HttpStatus.OK).body(orderList) ;
+    }
+
     @PutMapping("/updateorder")
     public ResponseEntity<Order> updateOrder(@RequestBody CriteriaDto criteria)
     {

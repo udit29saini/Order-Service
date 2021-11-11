@@ -1,6 +1,7 @@
 
 package com.demoservice.orderservice;
 
+		import com.demoservice.orderservice.dto.CriteriaDto;
 		import com.demoservice.orderservice.entity.Order;
 		import com.demoservice.orderservice.repository.OrderRepository;
 		import com.demoservice.orderservice.service.OrderService;
@@ -57,28 +58,30 @@ class OrderServiceApplicationTests {
 ////				.andExpect(jsonPath("$.orderId" , is(order.getOrderId()))) ;
 //	}
 
-//	@Test
-//	void bookOrder() throws Exception{
-//		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.now(), 20.0);
-//		String stringOrder = objectMapper.writeValueAsString(order);
-//
-//		Mockito.when(mockRepository.save(order)).thenReturn(order) ;
-//
-//		mockMvc.perform(get("/order/bookorder"))
-//				.andDo(print())
-//				.andExpect(status().isCreated());
-//	}
-//
-//	@Test
-//	void queryOrder() throws Exception{
-//		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.now(), 20.0);
-//		String stringOrder = objectMapper.writeValueAsString(order);
-//
-//		Mockito.when(mockRepository.save(order)).thenReturn(order) ;
-//
-//		mockMvc.perform(get("/order/query-criteria/{queryCategory}/{queryParam}" ))
-//				.andDo(print())
-//				.andExpect(status().isCreated());
-//	}
+	@Test
+	void shouldReturnOneParticularOrderBasedOnOrderId() throws Exception {
+		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.now(), 20.0,"@gmail" , "111");
+		Mockito.when(mockRepository.findById(order.getOrderId())).thenReturn(Optional.of(order));
+
+		mockMvc.perform(get("/order/getorder/" + order.getOrderId()))
+				.andDo(print())
+				.andExpect(status().isFound());
+//				.andExpect(jsonPath("$.orderId" , is(order.getOrderId()))) ;
+	}
+
+
+	@Test
+	void updateOrder() throws Exception {
+		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.now(), 20.0 , "@gmail" , "111");
+		CriteriaDto criteriaDto = new CriteriaDto(1 , "bcd" , "@yahoo" , "999") ;
+		Order updatedOrder = new Order(1 , "a","b" , criteriaDto.getBillingAddress() , true , LocalDateTime.now() , 20.0 , criteriaDto.getEmail() , criteriaDto.getMobileNumber()) ;
+
+
+
+		mockMvc.perform(get("/order/updateorder"))
+				.andDo(print())
+				.andExpect(status().isFound())
+				.andExpect(jsonPath("$.orderId" , is(order.getOrderId()))) ;
+	}
 
 }

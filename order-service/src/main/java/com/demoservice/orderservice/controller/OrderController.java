@@ -49,14 +49,16 @@ public class OrderController {
             itemsReservationDTO.setLocation(order.getShippingAddress());
             itemsReservationDTO.setProductId(product.getName());
 
-            String s= restTemplate.postForObject("http://localhost:8081/api/itemsreserve",itemsReservationDTO,String.class);
-            if(s.compareTo("Warehouse not found")==0)
-            {
+            try{
+                String s= restTemplate.postForObject("http://localhost:8081/api/itemsreserve",itemsReservationDTO,String.class);
+                System.out.println(s);
+            }
+            catch (Exception e) {
+                log.info("Bad Request");
                 orderConfirmDTO.setOrderStatus("Uncomfirmed");
                 orderConfirmDTO.setWarehouseLocation("Product not available in this location");
-                return new ResponseEntity<OrderConfirmDTO>(orderConfirmDTO , HttpStatus.OK) ;
+                return new ResponseEntity<OrderConfirmDTO>(orderConfirmDTO , HttpStatus.BAD_REQUEST) ;
             }
-            System.out.println(s);
         }
     	orderConfirmDTO = orderService.saveOrder(order);
     	return new ResponseEntity<OrderConfirmDTO>(orderConfirmDTO , HttpStatus.CREATED) ;
@@ -75,7 +77,7 @@ public class OrderController {
     public ResponseEntity<Order> getOrderFromOrderId(@PathVariable int orderId){
         log.info("Fetching the order for orderId {}" , orderId) ;
         Order order = orderService.getOrderByOrderId(orderId) ;
-        return new ResponseEntity<Order>(order , HttpStatus.FOUND) ;
+        return new ResponseEntity<Order>(order , HttpStatus.OK) ;
     }
 
     @GetMapping("/query-criteria/{queryCategory}/{queryParam}")
@@ -84,7 +86,7 @@ public class OrderController {
         log.info("Query Category {}",queryCategory);
         log.info("Query the order with this criteria {}",queryParam);
         List<Order> list= orderService.queryOrder(queryCategory,queryParam);
-        return new ResponseEntity<List<Order>>(list,HttpStatus.FOUND);
+        return new ResponseEntity<List<Order>>(list,HttpStatus.OK);
     }
     
 	

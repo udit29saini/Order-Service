@@ -146,6 +146,8 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>Order-service-docker</finalName>
+
 	</build>
 
 </project>

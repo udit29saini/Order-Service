@@ -43,19 +43,19 @@ class OrderServiceApplicationTests {
 
 	ObjectMapper objectMapper = new ObjectMapper();
 
-	@Test
-	void shouldReturnOneParticularOrderBasedOnOrderId() throws Exception {
-		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.now(), 20.0);
-		String stringOrder = objectMapper.writeValueAsString(order);
-
-		Mockito.when(mockRepository.findById(1)).thenReturn(Optional.of(order));
-
-		mockMvc.perform(get("/order/getOrder/" + order.getOrderId()))
-				.andDo(print())
-				.andExpect(status().isFound());
-//				.andExpect(jsonPath("$.orderId" , is(order.getOrderId()))) ;
-//				.andExpect(jsonPath("$.orderId" , is(order.getOrderId()))) ;
-	}
+//	@Test
+//	void shouldReturnOneParticularOrderBasedOnOrderId() throws Exception {
+//		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.now(), 20.0);
+//		String stringOrder = objectMapper.writeValueAsString(order);
+//
+//		Mockito.when(mockRepository.findById(1)).thenReturn(Optional.of(order));
+//
+//		mockMvc.perform(get("/order/getOrder/" + order.getOrderId()))
+//				.andDo(print())
+//				.andExpect(status().isFound());
+////				.andExpect(jsonPath("$.orderId" , is(order.getOrderId()))) ;
+////				.andExpect(jsonPath("$.orderId" , is(order.getOrderId()))) ;
+//	}
 
 //	@Test
 //	void bookOrder() throws Exception{

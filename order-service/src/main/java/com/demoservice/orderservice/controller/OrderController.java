@@ -62,6 +62,13 @@ public class OrderController {
     	return new ResponseEntity<OrderConfirmDTO>(orderConfirmDTO , HttpStatus.CREATED) ;
     }
 
+    @GetMapping("/getorder")
+    public ResponseEntity getAllOrders(){
+        log.info("Fetching all orders") ;
+        List<Order> orderList = orderService.fetchAllOrders();
+        return ResponseEntity.status(HttpStatus.OK).body(orderList) ;
+    }
+
     @PutMapping("/updateorder")
     public ResponseEntity<Order> updateOrder(@RequestBody CriteriaDto criteria)
     {
@@ -75,7 +82,7 @@ public class OrderController {
     public ResponseEntity<Order> getOrderFromOrderId(@PathVariable int orderId){
         log.info("Fetching the order for orderId {}" , orderId) ;
         Order order = orderService.getOrderByOrderId(orderId) ;
-        return new ResponseEntity<Order>(order , HttpStatus.FOUND) ;
+        return new ResponseEntity<Order>(order , HttpStatus.OK) ;
     }
 
     @GetMapping("/query-criteria/{queryCategory}/{queryParam}")
@@ -84,7 +91,7 @@ public class OrderController {
         log.info("Query Category {}",queryCategory);
         log.info("Query the order with this criteria {}",queryParam);
         List<Order> list= orderService.queryOrder(queryCategory,queryParam);
-        return new ResponseEntity<List<Order>>(list,HttpStatus.FOUND);
+        return new ResponseEntity<List<Order>>(list,HttpStatus.OK);
     }
     
 	

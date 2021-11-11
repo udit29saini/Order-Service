@@ -27,7 +27,7 @@ public class Order {
     @JoinColumn(name = "oId",referencedColumnName = "orderId")
     private List<Product> products;
 
-    public Order(int orderId, String nameCustomer, String shippingAddress, String billingAddress, boolean b, LocalDateTime now, double v){
+    public Order(int orderId, String nameCustomer, String shippingAddress, String billingAddress, boolean b, LocalDateTime now, double v, String s, String s1){
         this.orderId = orderId ;
         this.nameCustomer = nameCustomer ;
         this.shippingAddress = shippingAddress ;

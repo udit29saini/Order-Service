@@ -89,4 +89,7 @@ public class OrderService {
 		return list;
 	}
 
+	public List<Order> fetchAllOrders() {
+		return (List<Order>)orderRepository.findAll() ;
+	}
 }

@@ -31,20 +31,21 @@ class OrderServiceTest {
 	@Test
 	void saveOrderTest()
 	{
-		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0);
-		order.setOrderCost(50.0);
-		when((orderRepository.save(order))).thenReturn(order);
-		
-		//Order response = orderService.saveOrder(order);
-		
-		//assertEquals(response.getOrderId(), order.getOrderId());
-		
+		/*
+		 * Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11,
+		 * 10, 03, 36), 20.0,null,null); order.setOrderCost(50.0);
+		 * when((orderRepository.save(order))).thenReturn(order);
+		 * 
+		 * //Order response = orderService.saveOrder(order);
+		 * 
+		 * //assertEquals(response.getOrderId(), order.getOrderId());
+		 */		
 		
 	}
 	@Test
 	void getOrderTest()
 	{
-		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0);
+		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0,null,null);
 		order.setOrderCost(50.0);
 		
 		Optional<Order>expected = Optional.ofNullable(order);
@@ -65,7 +66,7 @@ class OrderServiceTest {
 		criteria.setBillingAddress("c");
 		
 		
-		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0);
+		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0,null,null);
 		order.setOrderCost(50.0);
 		Optional<Order> expected= Optional.ofNullable(order);
 		
@@ -88,7 +89,7 @@ class OrderServiceTest {
 		
 		
 		
-		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0);
+		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0,null,null);
 		order.setOrderCost(50.0);
 		Optional<Order> expected= Optional.ofNullable(order);
 		
@@ -110,7 +111,7 @@ class OrderServiceTest {
 		criteria.setMobileNumber("c");
 		
 		
-		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0);
+		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0,null,null);
 		order.setOrderCost(50.0);
 		Optional<Order> expected= Optional.ofNullable(order);
 		
@@ -126,7 +127,7 @@ class OrderServiceTest {
 	@Test
 	void queryOrderTest1()
 	{
-		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0);
+		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0,null,null);
 		
 		
 		List<Order> list = new ArrayList<>();
@@ -141,7 +142,7 @@ class OrderServiceTest {
 	@Test
 	void queryOrderTest2()
 	{
-		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0);
+		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0,null,null);
 		
 		
 		List<Order> list = new ArrayList<>();
@@ -156,7 +157,7 @@ class OrderServiceTest {
 	@Test
 	void queryOrderTest3()
 	{
-		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0);
+		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0,null,null);
 		
 		
 		List<Order> list = new ArrayList<>();
@@ -171,7 +172,7 @@ class OrderServiceTest {
 	@Test
 	void queryOrderTest4()
 	{
-		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0);
+		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0,null,null);
 		
 		
 		List<Order> list = new ArrayList<>();
@@ -186,7 +187,7 @@ class OrderServiceTest {
 	@Test
 	void queryOrderTest5()
 	{
-		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0);
+		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0,null,null);
 		
 		
 		List<Order> list = new ArrayList<>();

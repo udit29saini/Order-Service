@@ -1,0 +1,28 @@
+spring.application.name: spring-data-service
+
+server:
+  port: 8091
+
+management.server.port: 8083
+
+spring.data.cassandra:
+  keyspace-name: main
+  username: uJBpbqIPSBXYtYexSGzwShcj
+  password: zd,+8nIGZgl_AP9DZrUeRYgsj_Kins7YJTlj33W86ZaNrn9k7hPxGNQ1WDwrkr8rjiL9hlsmdJRRPkph_dIiGdtZibRg4QyKq3pyDMqWKkJhq02OeiZkSxSIch4bEDxX
+  # Create the schema on the fly if it doesn't exist
+  schema-action: create_if_not_exists
+  # Increase timeouts when connecting to Astra from a dev workstation
+  request:
+    timeout: 10s
+  connection:
+    connect-timeout: 10s
+    init-query-timeout: 10s
+
+datastax.astra:
+  secure-connect-bundle: C:\Users\vippraka\Downloads\Cassandra\cassandra\src\main\resources\secure-connect-orderdb.zip
+
+astra.db:
+  id: 3addce61-f167-4000-b06a-139502c05e45-1
+  region: us-east-1
+  keyspace: main
+  applcation.token: AstraCS:uJBpbqIPSBXYtYexSGzwShcj:1bd6bc9b183db8a3f106483e489dd56a5372f21fbfc8100ee355f9dea6ee1588

@@ -43,6 +43,22 @@ class OrderServiceTest {
 		
 	}
 	@Test
+	void getTestFetchAllOrders()
+	{
+		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0,null,null);
+		List<Order>expected = new ArrayList<Order>();
+		
+		expected.add(order);
+		
+		when(orderRepository.findAll()).thenReturn(expected);
+		
+		List<Order>response = orderService.fetchAllOrders();
+		
+		assertEquals(expected,response);
+		
+		
+	}
+	@Test
 	void getOrderTest()
 	{
 		Order order = new Order(1, "a", "b", "c", true, LocalDateTime.of(2021, 11, 10, 03, 36), 20.0,null,null);

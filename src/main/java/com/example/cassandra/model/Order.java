@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -22,9 +23,13 @@ import java.util.List;
 public class Order implements Serializable {
 
 
-    @PrimaryKey(value = "OrderID")
-    @CassandraType(type = CassandraType.Name.INT)
-    private int orderId;
+//    @PrimaryKey(value = "OrderID")
+//    @CassandraType(type = CassandraType.Name.UUID)
+//    private int orderId;
+
+    @PrimaryKeyColumn(name = "OrderID",ordinal = 0,type=PrimaryKeyType.PARTITIONED)
+    @CassandraType(type = CassandraType.Name.UUID)
+    private UUID orderId;
 
     @Column("NameOfCustomer")
     @CassandraType(type = CassandraType.Name.TEXT)
@@ -63,7 +68,7 @@ public class Order implements Serializable {
     private List<Product> products;
 
 
-    public Order(int orderId, String nameCustomer, String shippingAddress, String billingAddress, boolean b, LocalDate now, double v, String s, String s1){
+    public Order(UUID orderId, String nameCustomer, String shippingAddress, String billingAddress, boolean b, LocalDate now, double v, String s, String s1){
         this.orderId = orderId ;
         this.nameCustomer = nameCustomer ;
         this.shippingAddress = shippingAddress ;

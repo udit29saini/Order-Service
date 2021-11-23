@@ -47,7 +47,7 @@ public class OrderController {
         {
             ItemsReservationDTO itemsReservationDTO = new ItemsReservationDTO();
             itemsReservationDTO.setLocation(order.getShippingAddress());
-            itemsReservationDTO.setProductId(product.getId());
+            itemsReservationDTO.setProductId(product.getName());
 
             try{
                 String s= restTemplate.postForObject("http://localhost:8081/api/itemsreserve",itemsReservationDTO,String.class);

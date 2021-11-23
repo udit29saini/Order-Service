@@ -19,8 +19,7 @@ spring.data.cassandra:
     init-query-timeout: 10s
 
 datastax.astra:
-  secure-connect-bundle: C:\Users\vippraka\Downloads\Cassandra\cassandra\src\main\resources\secure-connect-orderdb.zip
-
+  secure-connect-bundle: src/main/resources/secure-connect-orderdb.zip
 astra.db:
   id: 3addce61-f167-4000-b06a-139502c05e45-1
   region: us-east-1

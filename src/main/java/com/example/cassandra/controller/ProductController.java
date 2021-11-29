@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
+@CrossOrigin(value="*")
 @Slf4j
 @RestController
 @RequestMapping("/products")

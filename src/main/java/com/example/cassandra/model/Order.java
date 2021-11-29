@@ -28,8 +28,8 @@ public class Order implements Serializable {
 //    private int orderId;
 
     @PrimaryKeyColumn(name = "OrderID",ordinal = 0,type=PrimaryKeyType.PARTITIONED)
-    @CassandraType(type = CassandraType.Name.UUID)
-    private UUID orderId;
+    @CassandraType(type = CassandraType.Name.INT)
+    private int orderId;
 
     @Column("NameOfCustomer")
     @CassandraType(type = CassandraType.Name.TEXT)
@@ -68,7 +68,7 @@ public class Order implements Serializable {
     private List<Product> products;
 
 
-    public Order(UUID orderId, String nameCustomer, String shippingAddress, String billingAddress, boolean b, LocalDate now, double v, String s, String s1){
+    public Order(int orderId, String nameCustomer, String shippingAddress, String billingAddress, boolean b, LocalDate now, double v, String s, String s1){
         this.orderId = orderId ;
         this.nameCustomer = nameCustomer ;
         this.shippingAddress = shippingAddress ;

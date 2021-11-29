@@ -19,6 +19,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 @CrossOrigin(value="*")
 @Slf4j
 @RestController
@@ -39,7 +41,7 @@ public class OrderController {
     public ResponseEntity<OrderConfirmDTO> bookOrder(@RequestBody Order order){
     	log.info("In the bookOrder {}",order);
         RestTemplate restTemplate= new RestTemplate();
-
+        order.setOrderId((int)(Math.random()*100));
         List<Product> list= new ArrayList<>();
         list=order.getProducts();
         OrderConfirmDTO orderConfirmDTO= new OrderConfirmDTO();
@@ -47,15 +49,14 @@ public class OrderController {
         {
             ItemsReservationDTO itemsReservationDTO = new ItemsReservationDTO();
             itemsReservationDTO.setLocation(order.getShippingAddress());
-            itemsReservationDTO.setProductId(product.getName());
-
+            itemsReservationDTO.setProductId(product.getId());
             try{
                 String s= restTemplate.postForObject("http://localhost:8081/api/itemsreserve",itemsReservationDTO,String.class);
                 System.out.println(s);
             }
             catch (Exception e) {
                 log.info("Bad Request");
-                orderConfirmDTO.setOrderStatus("Uncomfirmed");
+                orderConfirmDTO.setOrderStatus(product.getId());
                 orderConfirmDTO.setWarehouseLocation("Product not available in this location");
                 return new ResponseEntity<OrderConfirmDTO>(orderConfirmDTO , HttpStatus.BAD_REQUEST) ;
             }

@@ -15,6 +15,8 @@ import java.util.List;
 @UserDefinedType("product_type")
 public class Product implements Serializable {
 
+    private String categoryId;
+
     private String id;
 
     private String name;
@@ -23,7 +25,4 @@ public class Product implements Serializable {
 
     private String imageUrl;
 
-    private String descId;
-
-    private List<String> categoryId;
 }

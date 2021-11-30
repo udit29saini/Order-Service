@@ -6,6 +6,7 @@ import com.example.cassandra.model.Order;
 import com.example.cassandra.repository.ImplQueryRepository;
 import com.example.cassandra.repository.OrderRepository;
 import com.example.cassandra.repository.QueryRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class OrderService {
 
 	@Autowired
@@ -94,7 +96,15 @@ public class OrderService {
 		}
 
 		if (queryCategory.compareTo("Date") == 0) {
-			list = queryRepository.findByDate(LocalDate.parse(queryParam));
+			try{
+				list = queryRepository.findByDate(LocalDate.parse(queryParam));
+			}
+			catch (Exception e){
+				//log.info("Enter valid date {}",e.getMessage());
+				System.out.println("Enter valid date "+e.getMessage());
+
+			}
+
 		}
 
 

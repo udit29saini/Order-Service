@@ -92,6 +92,12 @@ public class OrderService {
 		if (queryCategory.compareTo("Name") == 0) {
 			list = queryRepository.findByName(queryParam);
 		}
+
+		if (queryCategory.compareTo("Date") == 0) {
+			list = queryRepository.findByDate(LocalDate.parse(queryParam));
+		}
+
+
 		return list;
 	}
 

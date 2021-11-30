@@ -8,7 +8,9 @@ import org.springframework.data.cassandra.core.query.Criteria;
 import org.springframework.data.cassandra.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -36,4 +38,11 @@ public class ImplQueryRepository implements QueryRepository {
     public List<Order> findByPA(boolean queryParam) {
         return cassandraTemplate.select(Query.query(Criteria.where("paymentstatus").is(queryParam)).withAllowFiltering(), Order.class);
     }
+
+    @Override
+    public List<Order> findByDate(LocalDate date) {
+        return cassandraTemplate.select(Query.query(Criteria.where("orderdate").is(date)).withAllowFiltering(), Order.class);
+    }
+
+
 }

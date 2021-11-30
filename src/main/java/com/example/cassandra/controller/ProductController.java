@@ -32,4 +32,6 @@ public class ProductController {
         List<Product> products = productService.fetchProduct();
         return ResponseEntity.status(HttpStatus.OK).body(products);
     }
+
+
 }
